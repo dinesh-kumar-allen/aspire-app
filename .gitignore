@@ -1,0 +1,14 @@
+node_modules
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+.pnp.*
+.yarn
+.vscode
+node_modules
+**/.DS_Store
+coverage/
+tsconfig.tsbuildinfo
+.nx
+.vercel
+.next
