@@ -26,6 +26,14 @@
   --color-shadow-5: #0000000A;
   --color-shadow-6: #0000000F;
   --font-sans: 'Open Sans', Arial, Helvetica, sans-serif;
+
+  /* text sizes */
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-base: 15px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
 }
 
 body {

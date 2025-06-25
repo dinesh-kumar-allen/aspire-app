@@ -25,7 +25,7 @@ const Accordion: React.FC<AccordionProps> = ({
         >
           <div className="flex items-center gap-3">
             {icon && <Image src={icon} alt="icon" width={24} height={24} />}
-            <span className="text-sm lg:text-lg text-dark-blue">{title}</span>
+            <span className="text-sm text-dark-blue">{title}</span>
           </div>
           <Image
             src={expanded ? "/up-arrow.svg" : "/down-arrow.svg"}

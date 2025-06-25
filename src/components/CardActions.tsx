@@ -14,12 +14,12 @@ const CardActions: React.FC<CardActionsProps> = ({ activeCard, onAction, freezeT
     {
       id: "freeze",
       name: activeCard.isFrozen ? "Unfreeze card" : "Freeze card",
-      icon: activeCard.isFrozen ? "/remove_red_eye-24px.svg" : "/Freeze card.svg",
+      icon: activeCard.isFrozen ? "/unfreeze.svg" : "/Freeze card.svg",
       action: () => {
         onAction({
           id: "freeze",
           name: activeCard.isFrozen ? "Unfreeze card" : "Freeze card",
-          icon: activeCard.isFrozen ? "/remove_red_eye-24px.svg" : "/Freeze card.svg",
+          icon: activeCard.isFrozen ? "/unfreeze.svg" : "/Freeze card.svg",
           action: () => {}
         });
       }

@@ -9,14 +9,14 @@ export default function Sidebar() {
   const pathName = usePathname();
   
   return (
-    <aside className="hidden lg:block bg-dark-blue text-white min-h-screen flex flex-col px-8 py-10 lg:w-[340px]">
+    <aside className="hidden lg:flex bg-dark-blue text-white min-h-screen flex-col px-8 py-10 lg:w-[340px]">
       {/* Logo and tagline */}
       <div className="mb-20">
         <div className="flex items-center mb-2">
           {/* Placeholder logo */}
           <Image src={COMPANY_LOGO_URL} alt="aspire" width={125} height={35} />
         </div>
-        <div className="text-md text-white opacity-30 leading-tight">
+        <div className="text-sm text-white opacity-30 leading-tight">
           {COMPANY_DESCRIPTION}
         </div>
       </div>

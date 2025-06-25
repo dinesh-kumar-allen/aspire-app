@@ -178,13 +178,6 @@ const AddCardModal: React.FC<AddCardModalProps> = ({
 
           <div className="flex space-x-3 pt-4">
             <button
-              type="button"
-              onClick={onClose}
-              className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors cursor-pointer"
-            >
-              Cancel
-            </button>
-            <button
               type="submit"
               className="flex-1 px-4 py-2 bg-highlight-blue text-white rounded-lg transition-colors cursor-pointer"
               data-testid="submit-card"

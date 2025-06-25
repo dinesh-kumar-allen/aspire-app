@@ -133,7 +133,7 @@ export default function CardsPage() {
   }
 
   return (
-    <main className="flex-1 bg-highlight-blue lg:bg-white min-h-screen lg:px-15">
+    <main className="flex-1 bg-highlight-blue lg:bg-white min-h-screen">
       {renderHeader()}
       {renderError()}
 
