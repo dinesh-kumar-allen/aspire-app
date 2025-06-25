@@ -25,13 +25,13 @@ export default function CardsContainer({
   const activeCard = useMemo(() => cards[activeCardIndex] || cards[0], [cards, activeCardIndex]);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12.5 p-10 rounded-xl shadow-[0px_0px_8px_2px_var(--color-shadow-3)]" data-testid={dataTestId}>
+    <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-y-0 lg:gap-12.5 lg:p-10 lg:rounded-xl lg:shadow-[0px_0px_8px_2px_var(--color-shadow-3)]" data-testid={dataTestId}>
       {/* Left Column - Card Carousel and Actions */}
-      <div className="lg:col-span-1 space-y-8">
+      <div className="lg:col-span-1 lg:space-y-8">
         {/* Show Card Number Toggle */}
-        <div className="flex items-center justify-end mb-2">
+        <div className="flex items-center justify-end mb-0 lg:mb-2 mr-4 lg:mr-0">
           <button
-            className="flex items-center gap-2 text-green-600 font-bold text-xs focus:outline-none cursor-pointer"
+            className="bg-white top-[5px] right-[2px] lg:right-0 relative lg:top-0 lg:bg-transparent px-2 lg:px-0 py-2 lg:py-0 lg:rounded-none rounded-t-xl flex items-center gap-2 text-green-600 font-bold text-xs lg:text-sm focus:outline-none cursor-pointer"
             onClick={() => setShowCardNumber((prev) => !prev)}
           >
             <Image src="/eye.svg" alt="eye" width={16} height={16} />
@@ -70,9 +70,11 @@ export default function CardsContainer({
       </div>
 
       {/* Right Column - Card Details and Transactions */}
-      <div className="space-y-6">
+      <div className="bg-white lg:bg-transparent">
+        <div className="mt-10 lg:mt-0">
         <CardDetails card={activeCard} showCardNumber={showCardNumber} />
         <RecentTransactions card={activeCard} />
+        </div>
       </div>
     </div>
   );

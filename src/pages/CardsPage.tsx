@@ -83,13 +83,13 @@ export default function CardsPage() {
 
   const renderHeader = useCallback(() => {
     return (
-        <div className="w-full-available mx-15 px-2 py-6" data-testid="header">
+        <div className="w-full-available lg:mx-15 px-2 py-6" data-testid="header">
           <div className="flex justify-between items-center">
             <div>
               <div className="flex items-center gap-4">
                 <div>
-                  <p className="text-base text-black">Available Balance</p>
-                  <p className="text-2xl font-bold text-black text-center flex items-center justify-start mt-2.25">
+                  <p className="text-base text-white lg:text-black">Available Balance</p>
+                  <p className="text-2xl font-bold text-white lg:text-black text-center flex items-center justify-start mt-2.25">
                     <span className="text-white bg-highlight-green px-2 py-1 rounded-md text-sm mr-2">
                       S$
                     </span>{" "}
@@ -100,10 +100,12 @@ export default function CardsPage() {
             </div>
             <button
               onClick={() => setIsAddCardModalOpen(true)}
-              className="flex items-center gap-2 bg-highlight-blue text-white px-4 py-2 rounded-lg text-sm font-bold cursor-pointer"
+              className="flex items-center gap-2  lg:bg-highlight-blue text-accent-blue lg:text-white px-4 py-2 rounded-lg text-sm font-bold cursor-pointer"
               data-testid="new-card-btn"
             >
-              <Image src="/add.svg" alt="Add" width={16} height={16} />
+              <Image src="/add.svg" alt="Add" width={16} height={16} className="hidden lg:block" />
+              <Image src="/plus.svg" alt="Add" width={16} height={16} className="block lg:hidden" />
+
               New Card
             </button>
           </div>
@@ -114,7 +116,7 @@ export default function CardsPage() {
   const renderError = useCallback(() => {
     return (
       error && (
-        <div className="w-full-available mx-15 px-2 py-4">
+        <div className="w-full-available lg:mx-15 px-2 py-4">
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
             {error}
           </div>
@@ -126,7 +128,7 @@ export default function CardsPage() {
   if (loading) {
     return (
       <div className="flex-1 bg-gray-50 min-h-screen">
-        <div className="flex items-center justify-center absolute top-[50%] left-[55%]">
+        <div className="flex items-center justify-center absolute top-[50%] left-[40%] lg:left-[55%]">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
           <span className="ml-2 text-gray-600">Loading...</span>
         </div>
@@ -135,11 +137,11 @@ export default function CardsPage() {
   }
 
   return (
-    <main className="flex-1 bg-gray-50 min-h-screen px-15">
+    <main className="flex-1 bg-highlight-blue lg:bg-white min-h-screen lg:px-15">
       {renderHeader()}
       {renderError()}
 
-      <div className="w-full-available px-2 py-6 mx-15">
+      <div className="w-full-available px-0 lg:px-2 lg:py-6 lg:mx-15">
         <Tabs
           tabs={TABS}
           activeTabId={activeTabId}

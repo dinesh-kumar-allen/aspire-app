@@ -25,7 +25,7 @@ const CardDetails = ({
       <div className="divide-y divide-[#E5E9F2]">
         {card ? (
           <>
-            <div className="space-y-2 px-6 py-4">
+            <div className="space-y-2 px-3 py-2 lg:px-6 lg:py-4 text-xs lg:text-sm">
               <div className="flex justify-between">
                 <span className="font-medium">Card Number:</span>
                 <span>

@@ -34,7 +34,7 @@ describe('CardsPage', () => {
   it('should show debit cards by default', () => {
     const { getByTestId } = renderWithProvider(<CardsPage />);
 
-    expect(getByTestId('tab-debit')).toHaveClass('text-black', 'font-bold');
+    expect(getByTestId('tab-debit')).toHaveClass('lg:text-black', 'font-bold');
     expect(getByTestId('cards-count')).toHaveTextContent('2'); // 2 debit cards
   });
 
@@ -43,7 +43,7 @@ describe('CardsPage', () => {
 
     fireEvent.click(getByTestId('tab-company'));
 
-    expect(getByTestId('tab-company')).toHaveClass('text-black', 'font-bold');
+    expect(getByTestId('tab-company')).toHaveClass('lg:text-black', 'font-bold');
     expect(getByTestId('cards-count')).toHaveTextContent('3'); // All 3 cards
   });
 

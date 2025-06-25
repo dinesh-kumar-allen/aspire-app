@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Sidebar from '../Sidebar';
+import BottomTabs from '../BottomTabs';
 
 // Mock Next.js Image component
 jest.mock('next/image', () => ({
@@ -23,12 +23,10 @@ jest.mock('next/navigation', () => ({
   }),
 }));
 
-describe('Sidebar Component', () => {
-  it('should render sidebar with navigation items', () => {
-    render(<Sidebar />);
+describe('BottomTabs Component', () => {
+  it('should render bottom tabs with navigation items', () => {
+    render(<BottomTabs />);
 
-    // The logo alt is 'aspire' (lowercase)
-    expect(screen.getByAltText('aspire')).toBeInTheDocument();
     expect(screen.getByText('Home')).toBeInTheDocument();
     expect(screen.getByText('Cards')).toBeInTheDocument();
     expect(screen.getByText('Payments')).toBeInTheDocument();
@@ -37,7 +35,7 @@ describe('Sidebar Component', () => {
   });
 
   it('should render all navigation icons', () => {
-    render(<Sidebar />);
+    render(<BottomTabs />);
 
     expect(screen.getByAltText('Home')).toBeInTheDocument();
     expect(screen.getByAltText('Cards')).toBeInTheDocument();
@@ -47,27 +45,27 @@ describe('Sidebar Component', () => {
   });
 
   it('should have correct navigation items as divs', () => {
-    const { container } = render(<Sidebar />);
-    // Navigation items are rendered as divs inside nav
-    const navItems = container.querySelectorAll('nav > div');
+    const { container } = render(<BottomTabs />);
+    // Navigation items are rendered as divs inside the flex container
+    const navItems = container.querySelectorAll('div > div');
     expect(navItems).toHaveLength(5); // 5 navigation items
   });
 
   it('should have proper styling classes', () => {
-    const { container } = render(<Sidebar />);
-    const sidebar = container.firstChild as HTMLElement;
-    expect(sidebar).toHaveClass('bg-dark-blue', 'text-white', 'min-h-screen', 'flex', 'flex-col', 'px-8', 'py-10');
-  });
-
-  it('should render logo correctly', () => {
-    render(<Sidebar />);
-    const logo = screen.getByAltText('aspire');
-    expect(logo).toBeInTheDocument();
+    const { container } = render(<BottomTabs />);
+    const nav = container.firstChild as HTMLElement;
+    expect(nav).toHaveClass('fixed', 'bottom-0', 'left-0', 'right-0', 'bg-white', 'border-t', 'border-gray-200', 'lg:hidden');
   });
 
   it('should have navigation items with proper structure', () => {
-    const { container } = render(<Sidebar />);
-    const navItems = container.querySelectorAll('nav > div');
+    const { container } = render(<BottomTabs />);
+    const navItems = container.querySelectorAll('div > div');
     expect(navItems.length).toBeGreaterThan(0);
+  });
+
+  it('should be hidden on large screens', () => {
+    const { container } = render(<BottomTabs />);
+    const nav = container.firstChild as HTMLElement;
+    expect(nav).toHaveClass('lg:hidden');
   });
 }); 

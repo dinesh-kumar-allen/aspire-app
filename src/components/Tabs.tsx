@@ -11,15 +11,15 @@ interface TabsProps {
 
 export default function Tabs({ tabs, activeTabId, onTabChange, className = '', 'data-testid': dataTestId }: TabsProps) {
   return (
-    <div className={`flex space-x-8 ${className}`} data-testid={dataTestId}>
+    <div className={`flex space-x-8 mx-4 lg:mx-0 ${className}`} data-testid={dataTestId}>
       {tabs.map((tab) => (
         <button
           key={tab.id}
           onClick={() => onTabChange(tab.id)}
-          className={`relative py-3 px-1 text-sm transition-colors cursor-pointer ${
+          className={`relative py-3 px-1 text-xs lg:text-sm transition-colors cursor-pointer ${
             activeTabId === tab.id
-              ? 'text-black font-bold'
-              : 'text-black/30'
+              ? 'text-white lg:text-black font-bold'
+              : 'text-white/50 lg:text-black/30'
           }`}
           data-testid={`tab-${tab.id}`}
         >

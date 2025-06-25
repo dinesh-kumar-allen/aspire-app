@@ -1,14 +1,15 @@
 'use client';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import React from 'react';
 import Image from 'next/image';
 import { SIDEBAR_ITEMS, COMPANY_DESCRIPTION, COMPANY_LOGO_URL } from '@/constants/sideBarConstants';
+import SidebarItem from './SidebarItem';
 
 export default function Sidebar() {
-  const router = useRouter();
   const pathName = usePathname();
+  
   return (
-    <aside className="bg-dark-blue text-white min-h-screen flex flex-col px-8 py-10 lg:w-[340px]">
+    <aside className="hidden lg:block bg-dark-blue text-white min-h-screen flex flex-col px-8 py-10 lg:w-[340px]">
       {/* Logo and tagline */}
       <div className="mb-20">
         <div className="flex items-center mb-2">
@@ -21,17 +22,16 @@ export default function Sidebar() {
       </div>
       {/* Navigation */}
       <nav className="flex flex-col">
-        {SIDEBAR_ITEMS.map((item) => {
-          const isActive = item.href  === pathName
-          return <div
+        {SIDEBAR_ITEMS.map((item) => (
+          <SidebarItem
             key={item.label}
-            className={`pb-15 flex items-center cursor-pointer text-base ${isActive ? 'text-highlight-green font-bold' : 'text-white font-medium'}`}
-            onClick={() => router.push(item.href)}
-          >
-            <Image src={item.iconUrl} alt={item.label} width={24} height={24} className='mr-4' />
-            {item.label}
-          </div>
-        })}
+            label={item.label}
+            iconUrl={item.iconUrl}
+            href={item.href}
+            isActive={item.href === pathName}
+            variant="sidebar"
+          />
+        ))}
       </nav>
     </aside>
   );

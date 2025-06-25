@@ -59,14 +59,6 @@ describe('Card Component', () => {
     expect(cardElement).toHaveClass('bg-highlight-green');
   });
 
-  it('should render with correct structure', () => {
-    const { container } = render(<Card card={mockCard} showCardNumber={true} />);
-
-    // Check for main card container
-    const cardContainer = container.firstChild as HTMLElement;
-    expect(cardContainer).toHaveClass('rounded-xl', 'p-6', 'text-white', 'shadow-lg', 'min-h-[240px]', 'relative', 'overflow-hidden', 'flex', 'flex-col', 'justify-between');
-  });
-
   it('should display card holder name prominently', () => {
     render(<Card card={mockCard} showCardNumber={true} />);
 

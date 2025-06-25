@@ -51,11 +51,20 @@ const RecentTransactions = ({ card }: RecentTransactionsProps) => {
         </div>
         <div className="flex-1">
           <div className="flex justify-between items-center">
-            <span className="font-semibold text-black">{tx.merchant}</span>
-            <span className={`font-bold ${tx.color}`}>{tx.amount}</span>
+            <span className="font-semibold text-black text-sm lg:text-base">
+              {tx.merchant}
+            </span>
+            <div className="flex items-center gap-2">
+              <span className={`font-bold ${tx.color} text-sm`}>
+                {tx.amount}
+              </span>
+              <div className="mr-2 p-1">
+                <Image src="/next.svg" alt="arrow-up" width={8} height={8} />
+              </div>
+            </div>
           </div>
-          <div className="text-grey text-sm">{tx.date}</div>
-          <div className="mt-2 flex items-center gap-2 text-highlight-blue text-sm font-semibold">
+          <div className="text-grey text-xs lg:text-sm">{tx.date}</div>
+          <div className="mt-2 flex items-center gap-2 text-highlight-blue text-xs lg:text-sm font-semibold">
             <div className="bg-highlight-blue rounded-xl p-1.5">
               <Image
                 src="/business-and-finance.svg"
@@ -83,7 +92,7 @@ const RecentTransactions = ({ card }: RecentTransactionsProps) => {
       onClick={() => setIsExpanded((prev) => !prev)}
     >
       <div className="divide-y divide-[#E5E9F2]">
-        <div className="px-6 py-4">{renderTransactions()}</div>
+        <div className="px-3 py-2 lg:px-6 lg:py-4">{renderTransactions()}</div>
         {cardTransactions && cardTransactions.length > 4 && (
           <div className="flex justify-center">
             <button

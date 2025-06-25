@@ -18,14 +18,14 @@ const Accordion: React.FC<AccordionProps> = ({
 }) => {
   return (
     <div className="mb-6">
-      <div className="rounded-xl overflow-hidden border border-[#E5E9F2]">
+      <div className="rounded-xl overflow-hidden border border-[#E5E9F2] mx-4 lg:mx-0">
         <button
-          className={`w-full flex items-center justify-between px-6 py-6.5 bg-[#F5F9FF] shadow-sm focus:outline-none cursor-pointer`}
+          className={`w-full flex items-center justify-between px-4 lg:px-6 py-4 lg:py-6.5 bg-background-card shadow-sm focus:outline-none cursor-pointer`}
           onClick={onClick}
         >
           <div className="flex items-center gap-3">
             {icon && <Image src={icon} alt="icon" width={24} height={24} />}
-            <span className="text-lg text-dark-blue">{title}</span>
+            <span className="text-sm lg:text-lg text-dark-blue">{title}</span>
           </div>
           <Image
             src={expanded ? "/up-arrow.svg" : "/down-arrow.svg"}

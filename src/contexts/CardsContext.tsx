@@ -47,7 +47,7 @@ type CardsAction =
 const initialState: CardsState = {
   cards: [],
   transactions: {},
-  loading: false,
+  loading: true,
   loadingTransactions: false,
   error: null,
 };
@@ -152,10 +152,6 @@ interface CardsProviderProps {
 export function CardsProvider({ children }: CardsProviderProps) {
   const [state, dispatch] = useReducer(cardsReducer, initialState);
 
-  const loadDefaultCards = () => {
-    dispatch({ type: "LOAD_CARDS", payload: { cards: MOCK_CARDS } });
-  }
-
   // Load data from localStorage on mount
   useEffect(() => {
     dispatch({ type: "SET_LOADING", payload: true });
@@ -164,13 +160,27 @@ export function CardsProvider({ children }: CardsProviderProps) {
         const storedCards = localStorage.getItem(CARDS_STORAGE_KEY);
         if (storedCards) {
           const { cards } = JSON.parse(storedCards);
-          if (cards.length > 0) {
+          if (cards && cards.length > 0) {
             dispatch({ type: "LOAD_CARDS", payload: { cards } });
           } else {
-            loadDefaultCards()
+            // If stored cards array is empty, load defaults and save them
+            const defaultCards = MOCK_CARDS;
+            dispatch({ type: "LOAD_CARDS", payload: { cards: defaultCards } });
+            // Explicitly save default cards to localStorage
+            localStorage.setItem(
+              CARDS_STORAGE_KEY,
+              JSON.stringify({ cards: defaultCards })
+            );
           }
         } else {
-          loadDefaultCards()
+          // No stored data, load defaults and save them
+          const defaultCards = MOCK_CARDS;
+          dispatch({ type: "LOAD_CARDS", payload: { cards: defaultCards } });
+          // Explicitly save default cards to localStorage
+          localStorage.setItem(
+            CARDS_STORAGE_KEY,
+            JSON.stringify({ cards: defaultCards })
+          );
         }
 
         // Load transactions
@@ -212,26 +222,32 @@ export function CardsProvider({ children }: CardsProviderProps) {
 
   // Save to localStorage whenever state changes
   useEffect(() => {
-    try {
-      localStorage.setItem(
-        CARDS_STORAGE_KEY,
-        JSON.stringify({
-          cards: state.cards,
-        })
-      );
-    } catch (error) {
-      console.error("Error saving cards to localStorage:", error);
+    // Only save if cards array is not empty to prevent overwriting with empty data
+    if (state.cards.length > 0) {
+      try {
+        localStorage.setItem(
+          CARDS_STORAGE_KEY,
+          JSON.stringify({
+            cards: state.cards,
+          })
+        );
+      } catch (error) {
+        console.error("Error saving cards to localStorage:", error);
+      }
     }
   }, [state.cards]);
 
   useEffect(() => {
-    try {
-      localStorage.setItem(
-        TRANSACTIONS_STORAGE_KEY,
-        JSON.stringify(state.transactions)
-      );
-    } catch (error) {
-      console.error("Error saving transactions to localStorage:", error);
+    // Only save if transactions object is not empty to prevent overwriting with empty data
+    if (Object.keys(state.transactions).length > 0) {
+      try {
+        localStorage.setItem(
+          TRANSACTIONS_STORAGE_KEY,
+          JSON.stringify(state.transactions)
+        );
+      } catch (error) {
+        console.error("Error saving transactions to localStorage:", error);
+      }
     }
   }, [state.transactions]);
 

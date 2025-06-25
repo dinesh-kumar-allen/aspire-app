@@ -79,7 +79,7 @@ const CardActions: React.FC<CardActionsProps> = ({ activeCard, onAction, freezeT
   ], [activeCard.isFrozen, onAction]);
 
   return (
-    <div className="bg-light-blue rounded-xl p-2 shadow-sm">
+    <div className="bg-light-blue rounded-t-xl lg:rounded-xl p-2 lg:shadow-sm">
       <div className="grid grid-cols-5 gap-5 px-2">
         {actions.map((action) => (
           <button

@@ -46,11 +46,11 @@ const CardCarousel: React.FC<CardCarouselProps> = ({
   const activeCard = cards[activeCardIndex];
 
   return (
-    <div className="relative">
+    <div className="relative ">
       {/* Card Display */}
       <div
         {...handlers}
-        className="cursor-grab active:cursor-grabbing select-none"
+        className="cursor-grab active:cursor-grabbing select-none mx-4 lg:mx-0"
       >
         <CardComponent card={activeCard} showCardNumber={showCardNumber} />
       </div>

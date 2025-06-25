@@ -10,16 +10,16 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ card, showCardNumber }) => {
   return (
-    <div className={"rounded-xl p-6 text-white shadow-lg min-h-[240px] relative overflow-hidden flex flex-col justify-between " + (card?.isFrozen ? "bg-highlight-green/40" : "bg-highlight-green")}>
+    <div className={"rounded-xl p-4 text-white shadow-lg h-[220px] lg:min-h-[260px] relative overflow-hidden flex flex-col justify-between " + (card?.isFrozen ? "bg-highlight-green/40" : "bg-highlight-green")}>
       {/* Top right logo */}
-      <div className="flex justify-between items-start mb-8">
+      <div className="flex justify-between items-start mb-4">
         <div></div>
         <Image src="/aspire_logo_transparent.svg" alt="aspire" width={84} height={24} />
       </div>
       
       {/* Card Holder */}
-      <div className="mb-4">
-        <p className="text-2xl font-bold mb-6">{card.cardHolder}</p>
+      <div className="mb-8">
+        <p className="text-2xl font-bold">{card.cardHolder}</p>
       </div>
       
       {/* Card Number */}
