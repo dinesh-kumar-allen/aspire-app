@@ -84,7 +84,7 @@ export default function CardsPage() {
 
   const renderHeader = useCallback(() => {
     return (
-        <div className="w-full-available lg:mx-15 px-2 py-6" data-testid="header">
+        <div className="w-full-available lg:mx-15 px-4 lg:px-2 py-6" data-testid="header">
           <div className="flex justify-between items-center">
             <div>
               <div className="flex items-center gap-4">
@@ -101,7 +101,7 @@ export default function CardsPage() {
             </div>
             <button
               onClick={() => setIsAddCardModalOpen(true)}
-              className="flex items-center gap-2  lg:bg-highlight-blue text-accent-blue lg:text-white px-4 py-2 rounded-lg text-sm font-bold cursor-pointer"
+              className="flex items-center gap-2  lg:bg-highlight-blue text-accent-blue lg:text-white  px-2 lg:px-4 py-2 rounded-lg text-sm font-bold cursor-pointer"
               data-testid="new-card-btn"
             >
               <Image src="/add.svg" alt="Add" width={16} height={16} className="hidden lg:block" />
