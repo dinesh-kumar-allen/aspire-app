@@ -41,7 +41,7 @@ export default function CardsContainer({
         {/* Card Carousel */}
         {cards.length > 0 ? (
           <>
-            <div data-testid="cards-count">{cards.length}</div>
+            <div data-testid="cards-count" className="hidden">{cards.length}</div>
             <CardCarousel
               cards={cards}
               activeCardIndex={activeCardIndex}
@@ -49,7 +49,7 @@ export default function CardsContainer({
               showCardNumber={showCardNumber}
             />
             {/* Card Holder Name for test */}
-            <div data-testid={`card-holder-${activeCardIndex}`}>{activeCard.cardHolder}</div>
+            <div data-testid={`card-holder-${activeCardIndex}`} className="hidden">{activeCard.cardHolder}</div>
           </>
         ) : (
           <div className="bg-white rounded-xl p-8 text-center">
