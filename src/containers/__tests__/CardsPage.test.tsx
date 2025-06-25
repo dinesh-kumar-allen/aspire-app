@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import CardsPage from '../CardsPage';
-import { CardsProvider } from '@/contexts/CardsContext';
+import { CardsProvider } from '../../contexts/CardsContext';
 
 const renderWithProvider = (component: React.ReactElement) => {
   return render(<CardsProvider>{component}</CardsProvider>);

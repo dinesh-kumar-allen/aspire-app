@@ -45,7 +45,10 @@ export default function CardsContainer({
             <CardCarousel
               cards={cards}
               activeCardIndex={activeCardIndex}
-              onCardChange={onCardChange}
+              onCardChange={(index) => {
+                onCardChange(index);
+                setShowCardNumber(false);
+              }}
               showCardNumber={showCardNumber}
             />
             {/* Card Holder Name for test */}

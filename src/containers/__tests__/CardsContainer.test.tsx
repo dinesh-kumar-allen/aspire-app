@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, fireEvent } from '@/test-utils';
+import { render } from '../../test-utils';
 import CardsContainer from '../CardsContainer';
-import { Card } from '@/interfaces/cards';
+import { Card } from '../../interfaces/cards';
 
 const mockCards: Card[] = [
   {

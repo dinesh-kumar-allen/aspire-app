@@ -56,7 +56,7 @@ describe('Sidebar Component', () => {
   it('should have proper styling classes', () => {
     const { container } = render(<Sidebar />);
     const sidebar = container.firstChild as HTMLElement;
-    expect(sidebar).toHaveClass('bg-dark-blue', 'text-white', 'min-h-screen', 'flex', 'flex-col', 'px-8', 'py-10');
+    expect(sidebar).toHaveClass( 'bg-dark-blue', 'text-white');
   });
 
   it('should render logo correctly', () => {

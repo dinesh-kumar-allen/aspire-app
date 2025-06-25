@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, act, waitFor } from '@testing-library/react';
 import { CardsProvider, useCards } from '../CardsContext';
-import { Card } from '@/interfaces/cards';
+import { Card } from '../../interfaces/cards';
 
 
 // Test component to access context

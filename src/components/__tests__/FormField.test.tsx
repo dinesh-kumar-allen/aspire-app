@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import FormField from '../FormField';
-import { FormField as FormFieldType } from '@/interfaces/cards';
+import { FormField as FormFieldType } from '../../interfaces/cards';
 
 const mockTextField: FormFieldType = {
   name: 'cardHolder',
