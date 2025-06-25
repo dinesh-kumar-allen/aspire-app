@@ -25,6 +25,7 @@ const RecentTransactions = ({ card }: RecentTransactionsProps) => {
         fetchTransactions(card.id);
       }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isExpanded, card]);
 
   const cardTransactions = card ? getTransactions(card.id) : [];

@@ -1,4 +1,4 @@
-import GenericPage from "@/pages/GenericPage";
+import GenericPage from "@/containers/GenericPage";
 
 export default function SettingsPage() {
   return (
