@@ -85,6 +85,9 @@ export default function CardsPage() {
   const renderHeader = useCallback(() => {
     return (
         <div className="w-full-available lg:mx-15 px-4 lg:px-2 py-6" data-testid="header">
+          <div className="flex justify-end lg:hidden mb-[-10px]">
+              <Image src="/aspire_plain_logo.svg" alt="logo" width={25} height={26} />
+          </div>
           <div className="flex justify-between items-center">
             <div>
               <div className="flex items-center gap-4">
