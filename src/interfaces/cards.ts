@@ -46,6 +46,11 @@ export interface AddCardFormData {
   cardCompany: CardCompany;
 }
 
+export interface SpendLimitFormData {
+  spendLimit: number;
+  cardNumber: string;
+}
+
 // New interfaces for modular form system
 export interface FormField {
   name: string;

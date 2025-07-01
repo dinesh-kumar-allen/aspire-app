@@ -1,6 +1,6 @@
 "use client";
 import React, { useCallback, useMemo, useState } from "react";
-import { Card, CardAction, AddCardFormData } from "@/interfaces/cards";
+import { Card, CardAction, AddCardFormData, SpendLimitFormData } from "@/interfaces/cards";
 import AddCardModal from "@/components/AddCardModal";
 import Tabs from "@/components/Tabs";
 import { useTabs } from "@/hooks/useTabs";
@@ -8,6 +8,7 @@ import Image from "next/image";
 import { useCards } from "@/contexts/CardsContext";
 import CardsContainer from "@/containers/CardsContainer";
 import Loading from "@/components/Loading";
+import SpendLimitModal from "@/components/SpendLimitModal";
 
 const TABS = [
   { id: "debit", label: "My Debit Cards" },
@@ -17,6 +18,7 @@ const TABS = [
 export default function CardsPage() {
   const [activeCardIndex, setActiveCardIndex] = useState(0);
   const [isAddCardModalOpen, setIsAddCardModalOpen] = useState(false);
+  const [isSpendLimitModalOpen, setIsSpendLimitModalOpen] = useState(false);
 
   const {
     getDebitCards,
@@ -54,6 +56,11 @@ export default function CardsPage() {
     addCard(newCard, isCompany);
   };
 
+  const handleSpendLimit = useCallback((data: SpendLimitFormData) => {
+    console.log("Spend limit data for card:", data);
+    setIsSpendLimitModalOpen(false);
+  }, []);
+
   const handleCardAction = (action: CardAction) => {
     const activeCard = currentCards[activeCardIndex];
     if (!activeCard) return;
@@ -68,7 +75,8 @@ export default function CardsPage() {
         );
         break;
       case "spend-limit":
-        alert("Set spend limit for card:" + activeCard.cardHolder);
+        // alert("Set spend limit for card:" + activeCard.cardHolder);
+        setIsSpendLimitModalOpen(prev => !prev);
         break;
       case "gpay":
         alert("Add to GPay:" + activeCard.cardHolder);
@@ -167,6 +175,15 @@ export default function CardsPage() {
         onClose={() => setIsAddCardModalOpen(false)}
         onSubmit={handleAddCard}
         data-testid="add-card-modal"
+      />
+
+      {/* Spend Limit Modal */}
+      <SpendLimitModal
+        isOpen={isSpendLimitModalOpen}
+        onClose={() => setIsSpendLimitModalOpen(false)}
+        onSubmit={handleSpendLimit}
+        cardNumber={currentCards[activeCardIndex].cardNumber}
+        data-testid="spend-limit-modal"
       />
     </main>
   );
