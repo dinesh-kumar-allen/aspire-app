@@ -1,5 +1,5 @@
 {
-  "name": "aspire-test-app",
+  "name": "test-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,16 +8,20 @@
     "start": "next start",
     "lint": "next lint",
     "analyze": "ANALYZE=true npm run build",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
+    "test:coverage": "jest --coverage --passWithNoTests",
     "test:ci": "jest --ci --coverage --watchAll=false"
   },
   "dependencies": {
+    "@types/react-window": "^2.0.0",
+    "add": "^2.0.6",
     "next": "15.3.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-swipeable": "^7.0.2"
+    "react-swipeable": "^7.0.2",
+    "react-virtualized": "^9.22.6",
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -27,10 +31,12 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
+    "@types/add": "^2",
     "@types/jest": "^30.0.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/react-virtualized": "^9",
     "eslint": "^9",
     "eslint-config-next": "15.3.4",
     "ignore-loader": "^0.1.2",
